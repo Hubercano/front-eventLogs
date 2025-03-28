@@ -1,0 +1,26 @@
+<div class="form">
+    <h1 class="form__title">Hola {{storedUser.name}}</h1>
+    <form [formGroup]="form">
+        <div>
+            <label for="" class="form__label">Nombre</label>
+            <input formControlName="name" class="" placeholder="nombre del evento" />
+            @if (nameField.hasError('required') && nameField.touched) {
+                <p class="form__error">Campo requerido</p>
+            }
+        </div>
+        <div>
+            <label for="" class="form__label">Email</label>
+            <input formControlName="email" class="" placeholder="nombre del evento" />
+            @if (emailField.hasError('required') && emailField.touched) {
+                <p class="form__error">Campo requerido</p>
+            }
+            @if (emailField.hasError('pattern') && emailField.touched) {
+                <p class="form__error">Correo invalido</p>
+            }
+        </div>
+        <button (click)="sendForm()" [disabled]="!form.valid">Enviar</button>
+        @if (successful) {
+            <div class="alert">Datos actualizados con exito</div>
+        }
+    </form>
+</div>

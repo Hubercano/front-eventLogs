@@ -1,0 +1,49 @@
+<div class="table">
+    <h1 class="table__title">Lista de eventos</h1>
+    <div class="table__filters">
+        <div>
+            <label for="" class="form__label">Tipo de Evento</label>
+            <select #type class="">
+                <option selected value="">seleccione el tipo del evento</option>
+                @for (item of listTypes; track $index) {
+                    <option [value]="item">{{item}}</option>
+                }
+            </select>
+        </div>
+        <div>
+            <label for="" class="form__label">Fecha de inicio</label>
+            <input type="date" #startDate>
+        </div>
+        <div>
+            <label for="" class="form__label">fecha fianl</label>
+            <input type="date" #endDate>
+        </div>
+        <button (click)="filterType(type.value, startDate.value, endDate.value)">filtrar</button>
+    </div>
+    @if (listEvents.length >= 1) {
+        <div  class="table__cont">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="15%">Nombre evento</th>
+                        <th width="40%">Descripción</th>
+                        <th width="10%">Tipo de envento</th>
+                        <th width="35%">fecha de creación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (item of listEvents; track $index) {
+                        <tr>
+                            <td width="15%"> {{item.title}} </td>
+                            <td width="40%" class="description">{{ parce(item.description) | json }}</td>
+                            <td width="10%" [class]="item.typeEvent"> {{item.typeEvent}} </td>
+                            <td width="35%"> {{item.createDate}} </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    } @else {
+        <h3>No se encontraron resultados</h3>
+    }
+</div>

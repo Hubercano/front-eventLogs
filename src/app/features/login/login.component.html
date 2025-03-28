@@ -1,0 +1,31 @@
+<div class="form">
+    <h1 class="form__title">Login</h1>
+    <form [formGroup]="form">
+        <div>
+            <label for="" class="form__label">Email</label>
+            <input formControlName="email" class="" placeholder="nombre del evento" />
+            @if (emailField.hasError('required') && emailField.touched) {
+                <p class="form__error">Campo requerido</p>
+            }
+            @if (emailField.hasError('pattern') && emailField.touched) {
+                <p class="form__error">Correo invalido</p>
+            }
+        </div>
+        <div>
+            <label for="" class="form__label">Clave</label>
+            <input type="password" formControlName="password" class="" placeholder="nombre del evento" />
+            @if (passwordField.hasError('required') && passwordField.touched) {
+                <p class="form__error">Campo requerido</p>
+            }
+        </div>
+        @if (error) {
+            <div class="error">Email o clave incorrectos</div>
+        }
+        <button (click)="sendForm()" [disabled]="!form.valid">Enviar</button>
+        <br>
+        <a class="redirect" routerLink="">Registrarme</a>
+        @if (successful) {
+            <div class="alert">Datos guardados con exito</div>
+        }
+    </form>
+</div>
