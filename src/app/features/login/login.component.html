@@ -1,31 +1,50 @@
-<div class="form">
-    <h1 class="form__title">Login</h1>
-    <form [formGroup]="form">
-        <div>
-            <label for="" class="form__label">Email</label>
-            <input formControlName="email" class="" placeholder="nombre del evento" />
-            @if (emailField.hasError('required') && emailField.touched) {
-                <p class="form__error">Campo requerido</p>
-            }
-            @if (emailField.hasError('pattern') && emailField.touched) {
-                <p class="form__error">Correo invalido</p>
-            }
-        </div>
-        <div>
-            <label for="" class="form__label">Clave</label>
-            <input type="password" formControlName="password" class="" placeholder="nombre del evento" />
-            @if (passwordField.hasError('required') && passwordField.touched) {
-                <p class="form__error">Campo requerido</p>
-            }
-        </div>
-        @if (error) {
-            <div class="error">Email o clave incorrectos</div>
+<div class="auth-shell">
+  <div class="auth-card card">
+    <div class="auth-card__header">
+      <div class="auth-card__logo">
+        <span class="auth-card__logo-icon">⚡</span>
+        <span class="auth-card__logo-text">EventLogs</span>
+      </div>
+      <h1 class="auth-card__title">Bienvenido de vuelta</h1>
+      <p class="auth-card__subtitle">Inicia sesión en tu cuenta</p>
+    </div>
+
+    <form [formGroup]="form" class="auth-form">
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input formControlName="email" class="form-control" placeholder="correo@ejemplo.com" type="email" />
+        @if (emailField.hasError('required') && emailField.touched) {
+          <p class="form-error">Campo requerido</p>
         }
-        <button (click)="sendForm()" [disabled]="!form.valid">Enviar</button>
-        <br>
-        <a class="redirect" routerLink="">Registrarme</a>
-        @if (successful) {
-            <div class="alert">Datos guardados con exito</div>
+        @if (emailField.hasError('pattern') && emailField.touched) {
+          <p class="form-error">Correo inválido</p>
         }
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Contraseña</label>
+        <input type="password" formControlName="password" class="form-control" placeholder="••••••••" />
+        @if (passwordField.hasError('required') && passwordField.touched) {
+          <p class="form-error">Campo requerido</p>
+        }
+      </div>
+
+      @if (error) {
+        <div class="alert alert--error auth-alert">Email o contraseña incorrectos</div>
+      }
+
+      <button class="btn btn--primary btn--full" (click)="sendForm()" [disabled]="!form.valid">
+        Iniciar sesión
+      </button>
+
+      <p class="auth-redirect">
+        ¿No tienes cuenta?
+        <a routerLink="">Regístrate aquí</a>
+      </p>
+
+      @if (successful) {
+        <div class="toast">✅ Datos guardados con éxito</div>
+      }
     </form>
+  </div>
 </div>

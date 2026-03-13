@@ -1,0 +1,127 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  min-height: 100%;
+  background: linear-gradient(180deg, #1a2238 0%, #253152 100%);
+  color: #e8ecf4;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+
+  &--collapsed {
+    width: 64px;
+
+    .sidebar__logo {
+      justify-content: center;
+    }
+  }
+}
+
+.sidebar__logo-area {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  min-height: 64px;
+}
+
+.sidebar__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.sidebar__logo-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.sidebar__logo-text {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+.sidebar__toggle {
+  background: transparent;
+  border: none;
+  color: #a0aec0;
+  cursor: pointer;
+  padding: 0.3rem;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+  }
+}
+
+.sidebar__toggle-icon {
+  line-height: 1;
+}
+
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0.5rem;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.sidebar__nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0.875rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #a0aec0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+  }
+
+  &--active {
+    background: rgba(67, 97, 238, 0.25);
+    color: #7c9fff;
+
+    .sidebar__nav-icon {
+      filter: none;
+    }
+  }
+}
+
+.sidebar__nav-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+}
+
+.sidebar__nav-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

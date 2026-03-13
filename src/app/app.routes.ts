@@ -4,6 +4,7 @@ import { RegisterComponent } from './features/register/register.component';
 import { LoginComponent } from './features/login/login.component';
 import { UpdateComponent } from './features/update/update.component';
 import { ProfileComponent } from './features/profile/profile.component';
+import { LayoutComponent } from './shared/components/layout/layout.component';
 
 export const routes: Routes = [
     {
@@ -15,15 +16,21 @@ export const routes: Routes = [
         component: LoginComponent
     },
     {
-        path: "update",
-        component: UpdateComponent
-    },
-    {
-        path: "profile",
-        component: ProfileComponent
-    },
-    {
-        path: "table",
-        component: TableComponent
+        path: "",
+        component: LayoutComponent,
+        children: [
+            {
+                path: "update",
+                component: UpdateComponent
+            },
+            {
+                path: "profile",
+                component: ProfileComponent
+            },
+            {
+                path: "table",
+                component: TableComponent
+            }
+        ]
     }
 ];
